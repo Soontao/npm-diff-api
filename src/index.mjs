@@ -8,6 +8,10 @@ const app = express();
 
 app.use((req, res) => {
   const packageName = req.path.slice(1);
+  if (packageName === "") {
+    res.status(400).json({ error: "No package name provided" });
+    return;
+  }
   // spawn a child process to run the npm diff command, output is collected to string variable
   const cmd = spawn(
     "npm",
