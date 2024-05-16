@@ -1,16 +1,12 @@
-# Javascript Project Template
+# NPM Diff API
 
-> self maintained javascript project template 
+```http
+GET /@sap/cds?from=7.9.0&to=7.9.1 HTTP/1.1
+Host: localhost:3000
+```
 
-## Setup
-
-* click `Use this template` to create new project 
-* update `package.json`, maintain your own package `name`, and other information like `author`.
-* add `LICENSE` if necessary (`npx license`)
-* maintain `CODECOV_TOKEN` to upload your coverage information
-* start your work
-
-## Release
-
-* maintain your npm token with secret name `Z_NPM_TOKEN`
-* Run `npm run release` to publish a new version of your package
+```json
+{
+  "diff": "...diff stuff..."
+}
+```
