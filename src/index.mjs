@@ -12,6 +12,15 @@ app.use((req, res) => {
     res.status(400).json({ error: "No package name provided" });
     return;
   }
+  if (!req.query.from || !req.query.to) {
+    res.status(400).json({
+      error: "No versions provided",
+      packageName,
+      from: req.query?.from,
+      to: req.query?.to,
+    });
+    return;
+  }
   // spawn a child process to run the npm diff command, output is collected to string variable
   const cmd = spawn(
     "npm",

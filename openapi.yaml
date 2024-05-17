@@ -1,0 +1,61 @@
+openapi: 3.0.0
+info:
+  title: npm-diff API
+  description: An API to get the difference between two versions of an npm package
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+paths:
+  /{packageName}:
+    get:
+      summary: Get the difference between two versions of an npm package
+      parameters:
+        - name: packageName
+          in: path
+          required: true
+          description: The name of the npm package
+          schema:
+            type: string
+        - name: from
+          in: query
+          required: true
+          description: The version of the package to compare from
+          schema:
+            type: string
+        - name: to
+          in: query
+          required: true
+          description: The version of the package to compare to
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  diff:
+                    type: string
+                    description: The difference between the two versions of the package
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error message indicating no package name provided
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error message indicating an internal server error occurred
