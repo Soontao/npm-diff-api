@@ -8,6 +8,7 @@ servers:
 paths:
   /{packageName}:
     get:
+      operationId: NPM Package Diff
       summary: Get the difference between two versions of an npm package
       parameters:
         - name: packageName
