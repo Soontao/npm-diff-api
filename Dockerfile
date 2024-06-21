@@ -4,6 +4,8 @@ FROM node:lts-alpine
 # Set the working directory in the container
 WORKDIR /usr/src/app
 
+RUN npm config set registry https://registry.npmmirror.com
+
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
 
